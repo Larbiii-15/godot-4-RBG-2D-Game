@@ -13,6 +13,8 @@ func _process(delta):
 
 func _on_body_entered(body): # créer un signal que je connecté sur ma piece pour détecter mon player
 	if body.name == "Player":  # càd si mon objet s'appelle player
+		player_data.coin += 1
+		print(player_data.coin)
 		$anim.play("collecte")
 		await $anim.animation_finished # attendre que mon animation fini pou que je peux supprimer l'objet (= queue_free)
 		queue_free()
