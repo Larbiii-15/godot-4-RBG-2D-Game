@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://bl8y0umxbcqxu"]
+[gd_scene load_steps=16 format=3 uid="uid://bl8y0umxbcqxu"]
 
 [ext_resource type="PackedScene" uid="uid://34jgk8dd3mwt" path="res://Scenes/Player/player.tscn" id="1_7bw6a"]
 [ext_resource type="PackedScene" uid="uid://7a8rof62m2vb" path="res://Scenes/Detectable/crate.tscn" id="3_5or4k"]
@@ -9,6 +9,7 @@
 [ext_resource type="Texture2D" uid="uid://covaatd41d2wh" path="res://Sprites/Interactables/coin.png" id="7_6a72y"]
 [ext_resource type="Texture2D" uid="uid://ds8x46avndky0" path="res://Sprites/UI/player_head.png" id="8_luu3r"]
 [ext_resource type="Texture2D" uid="uid://c6a0cp368pprm" path="res://Sprites/UI/HeartSpriteSheet.png" id="9_as14i"]
+[ext_resource type="PackedScene" uid="uid://4lpbeveg4kgy" path="res://Scripts/Danger/spikes.tscn" id="10_c0srq"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_k3phj"]
 texture = ExtResource("4_2ecnh")
@@ -323,3 +324,6 @@ position = Vector2(120, 56)
 scale = Vector2(2, 2)
 texture = ExtResource("9_as14i")
 hframes = 5
+
+[node name="spikes" parent="." instance=ExtResource("10_c0srq")]
+position = Vector2(247, 90)

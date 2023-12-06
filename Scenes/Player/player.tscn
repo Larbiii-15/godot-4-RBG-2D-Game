@@ -1,4 +1,4 @@
-[gd_scene load_steps=56 format=3 uid="uid://34jgk8dd3mwt"]
+[gd_scene load_steps=61 format=3 uid="uid://34jgk8dd3mwt"]
 
 [ext_resource type="Script" path="res://Scripts/Player/Player.gd" id="1_boqhh"]
 [ext_resource type="Texture2D" uid="uid://bwniqnmsn02ca" path="res://Sprites/Player/Player-rpg.png" id="2_q3tvb"]
@@ -507,6 +507,28 @@ _data = {
 "SwordUp": SubResource("Animation_4n8ph")
 }
 
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_lyntw"]
+animation = &"Dead"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_ntjqm"]
+animation = &"Dead"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_wvjel"]
+animation = &"Dead"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_tru88"]
+animation = &"Dead"
+
+[sub_resource type="AnimationNodeBlendSpace2D" id="AnimationNodeBlendSpace2D_io5xd"]
+blend_point_0/node = SubResource("AnimationNodeAnimation_lyntw")
+blend_point_0/pos = Vector2(-1, 0)
+blend_point_1/node = SubResource("AnimationNodeAnimation_ntjqm")
+blend_point_1/pos = Vector2(0, 1)
+blend_point_2/node = SubResource("AnimationNodeAnimation_wvjel")
+blend_point_2/pos = Vector2(1, 0)
+blend_point_3/node = SubResource("AnimationNodeAnimation_tru88")
+blend_point_3/pos = Vector2(0, -1)
+
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_3eos0"]
 animation = &"IdleLeft"
 
@@ -623,6 +645,8 @@ advance_mode = 2
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_i4tt1"]
 
 [sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_j7ma5"]
+states/Dead/node = SubResource("AnimationNodeBlendSpace2D_io5xd")
+states/Dead/position = Vector2(737.333, 122)
 states/Idle/node = SubResource("AnimationNodeBlendSpace2D_jxc77")
 states/Idle/position = Vector2(237.333, 148.864)
 states/Jump/node = SubResource("AnimationNodeBlendSpace2D_o0a6g")
@@ -647,7 +671,6 @@ vitesse = 70
 texture = ExtResource("2_q3tvb")
 hframes = 12
 vframes = 9
-frame = 14
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, 11.5)
@@ -662,6 +685,7 @@ libraries = {
 tree_root = SubResource("AnimationNodeStateMachine_j7ma5")
 anim_player = NodePath("../anim")
 active = true
+parameters/Dead/blend_position = Vector2(0, 0)
 parameters/Idle/blend_position = Vector2(0, 0)
 parameters/Jump/blend_position = Vector2(0, 0)
 parameters/Move/blend_position = Vector2(0, 0)

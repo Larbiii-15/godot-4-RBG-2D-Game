@@ -20,6 +20,8 @@ func _physics_process(delta):
 			move()
 		player_states.SWORD:
 			sword()
+		player_states.DEAD:
+			dead() # on va le connecter à notre fobction dead
 
 
 func move():
@@ -31,6 +33,7 @@ func move():
 		anim_tree.set("parameters/Jump/blend_position", input_movement)
 		anim_tree.set("parameters/Move/blend_position", input_movement)
 		anim_tree.set("parameters/Sword/blend_position", input_movement)
+		anim_tree.set("parameters/Dead/blend_position", input_movement)
 		anim_state.travel("Move") # pour le demandez d'apliquez ces paramètres
 		velocity = input_movement * vitesse
 	
@@ -39,12 +42,19 @@ func move():
 		velocity = Vector2.ZERO
 	if Input.is_action_just_pressed("ui_sword"): # càd qd tu click sur un button X cette input va exécuter sword "l'attaque" (ui_sword créer dans input map dans projet settings)
 		current_states = player_states.SWORD
-		
+	if player_data.health <= 0 : # pour gérer l'"tat mort de joeur
+		current_states = player_states.DEAD # permettre de transitionner de l'étar dans lequel on se trouve à l'"tat de mort
 		
 	move_and_slide()   # fct permet d'appliquer les mouvements
 	
 func sword():
 	anim_state.travel("Sword") # ici on va jouer notre animation
 	
+func dead():
+	anim_state.travel("Dead") # je vais indiquer à Godot qu'il faut qu'il voyage jusqu'à mon Blade Space Dead pour pouvoir jouer l'animation
+	await get_tree().create_timer(1).timeout
+	player_data.health = 4 
+	current_states = player_states.MOVE
+	get_tree().reload_current_scene() # va redémarer la scène dans laquelle on se trouve aprés la mort
 func on_states_reset(): # pour changer le state sword en state move aprés la fin d'un cycle d'attaque (right,left,up,down)
 	current_states = player_states.MOVE
