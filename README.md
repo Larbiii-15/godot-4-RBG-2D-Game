@@ -1,27 +1,25 @@
-# Instructions d'Installation
+# GODOT ENGINE GAME
 
-## 3. Instructions pour Installer le Jeu
+## Instructions d'Installation et d'Exécution
 
-### 3.1. Téléchargez le Fichier d'Installation du Jeu
+Bienvenue dans notre jeu passionnant ! Pour que vous puissiez l'installer et le tester, suivez ces étapes simples :
 
-Le jeu sera généralement distribué sous la forme d'un fichier compressé (ZIP, TAR, etc.) ou d'un exécutable, en fonction de la plateforme. Assurez-vous de télécharger le fichier depuis la source officielle ou l'endroit où le jeu est disponible.
+### 1. Clonage du Dépôt
 
-### 3.2. Décompressez l'Archive (si nécessaire)
+Commencez par cloner le dépôt sur votre machine locale en utilisant la commande Git suivante :
 
-Si le jeu est fourni sous forme d'archive compressée, extrayez son contenu dans un dossier de votre choix en utilisant un logiciel d'extraction tel que WinRAR, 7-Zip, ou l'utilitaire de décompression intégré de votre système d'exploitation.
+```bash
+git clone https://github.com/Larbiii-15/godot-4-RBG-2D-Game.git
 
-### 3.3. Lancez Godot Engine
+### 2. Installation de Godot Engine
+Assurez-vous que Godot Engine est installé sur votre ordinateur. Si ce n'est pas le cas, vous pouvez le télécharger depuis le site officiel de Godot Engine.
 
-Assurez-vous que Godot Engine 4.1 (ou une version ultérieure) est installé sur votre ordinateur. Lancez l'application Godot.
+### 3. Chargement du Projet dans Godot
+Lancez Godot Engine.
+Sélectionnez "Ouvrir un projet" et naviguez jusqu'au dossier où vous avez cloné le dépôt Git.
+Sélectionnez le fichier du projet Godot (généralement avec l'extension ".project") et cliquez sur "Ouvrir" ou "Importer".
+### 4. Exécution du Jeu
+Dans Godot, cliquez sur le bouton "Lancer" (représenté par une flèche verte).
+Profitez du jeu !
 
-### 3.4. Ouvrez le Projet
 
-Dans Godot, sélectionnez "Ouvrir un projet" ou "Importer un projet" en fonction de la manière dont le jeu est distribué. Naviguez jusqu'au dossier où vous avez extrait les fichiers du jeu.
-
-### 3.5. Chargez le Projet
-
-Sélectionnez le fichier du projet (généralement avec l'extension ".project") et cliquez sur "Ouvrir" ou "Importer". Le projet du jeu sera maintenant chargé dans Godot.
-
-### 3.6. Exécutez le Jeu
-
-Pour tester le jeu, cliquez sur le bouton "Lancer" (représenté par une flèche verte) dans Godot. Le jeu devrait se lancer dans une fenêtre de l'éditeur Godot.
