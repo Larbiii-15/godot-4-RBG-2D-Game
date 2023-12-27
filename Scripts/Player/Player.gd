@@ -56,5 +56,14 @@ func dead():
 	player_data.health = 4 
 	current_states = player_states.MOVE
 	get_tree().reload_current_scene() # va redémarer la scène dans laquelle on se trouve aprés la mort
+
+func flash(): # fonction pour nous démontre que notre joeur est blessé(changement de coleur)
+	$Sprite2D.material.set_shader_parameter("flash_modifier", 1) # donne couleur blanc à mon joeur càd blessé
+	await get_tree().create_timer(0.3).timeout # temps écolué apendant la blesure avant qu'il revient à son état normal
+	$Sprite2D.material.set_shader_parameter("flash_modifier", 0) # couleur 0 càd la couleur normal de notre joeur après qu'il a revenu à son état normal
 func on_states_reset(): # pour changer le state sword en state move aprés la fin d'un cycle d'attaque (right,left,up,down)
 	current_states = player_states.MOVE
+
+
+func _on_hitbox_area_entered(area):
+	flash()

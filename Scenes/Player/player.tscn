@@ -1,7 +1,13 @@
-[gd_scene load_steps=61 format=3 uid="uid://34jgk8dd3mwt"]
+[gd_scene load_steps=64 format=3 uid="uid://34jgk8dd3mwt"]
 
 [ext_resource type="Script" path="res://Scripts/Player/Player.gd" id="1_boqhh"]
 [ext_resource type="Texture2D" uid="uid://bwniqnmsn02ca" path="res://Sprites/Player/Player-rpg.png" id="2_q3tvb"]
+[ext_resource type="Shader" path="res://Scenes/Shaders/hurt.gdshader" id="2_uu4i2"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_12rxg"]
+shader = ExtResource("2_uu4i2")
+shader_parameter/flash_color = Color(1, 1, 1, 1)
+shader_parameter/flash_modifier = 0.0
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_os2me"]
 size = Vector2(12, 9)
@@ -661,6 +667,9 @@ transitions = ["Start", "Idle", SubResource("AnimationNodeStateMachineTransition
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_2asrh"]
 size = Vector2(14, 18)
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_3aj3j"]
+radius = 16.0
+
 [node name="Player" type="CharacterBody2D"]
 z_index = 5
 y_sort_enabled = true
@@ -668,6 +677,7 @@ script = ExtResource("1_boqhh")
 vitesse = 70
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+material = SubResource("ShaderMaterial_12rxg")
 texture = ExtResource("2_q3tvb")
 hframes = 12
 vframes = 9
@@ -700,3 +710,12 @@ collision_mask = 4
 position = Vector2(23, 1)
 shape = SubResource("RectangleShape2D_2asrh")
 debug_color = Color(0.929412, 0.184314, 0.486275, 0.419608)
+
+[node name="hitbox" type="Area2D" parent="."]
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="hitbox"]
+shape = SubResource("CircleShape2D_3aj3j")
+debug_color = Color(0.94902, 0.211765, 0, 0.419608)
+
+[connection signal="area_entered" from="hitbox" to="." method="_on_hitbox_area_entered"]
