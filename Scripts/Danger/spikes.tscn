@@ -3,9 +3,8 @@
 [ext_resource type="Script" path="res://Scripts/Danger/spikes.gd" id="1_onmus"]
 [ext_resource type="Texture2D" uid="uid://b0w1tq7utbh3r" path="res://Sprites/Hazards/spikes.png" id="2_cqeyg"]
 
-[sub_resource type="Animation" id="Animation_inqht"]
-resource_name = "inactif"
-length = 2.0
+[sub_resource type="Animation" id="Animation_sh1h7"]
+length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -25,24 +24,10 @@ tracks/1/path = NodePath("CollisionShape2D:disabled")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0, 2),
-"transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [true, true]
-}
-tracks/2/type = "method"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath(".")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(2),
+"times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
-"values": [{
-"args": [],
-"method": &"actif"
-}]
+"update": 1,
+"values": [true]
 }
 
 [sub_resource type="Animation" id="Animation_xqgrg"]
@@ -87,8 +72,9 @@ tracks/2/keys = {
 }]
 }
 
-[sub_resource type="Animation" id="Animation_sh1h7"]
-length = 0.001
+[sub_resource type="Animation" id="Animation_inqht"]
+resource_name = "inactif"
+length = 2.0
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -108,10 +94,24 @@ tracks/1/path = NodePath("CollisionShape2D:disabled")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
+"times": PackedFloat32Array(0, 2),
+"transitions": PackedFloat32Array(1, 1),
 "update": 1,
-"values": [true]
+"values": [true, true]
+}
+tracks/2/type = "method"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(2),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"actif"
+}]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_fdl6i"]
@@ -124,7 +124,7 @@ _data = {
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_j402p"]
 size = Vector2(16, 16)
 
-[node name="spikes" type="Area2D"]
+[node name="spikes" type="Area2D" groups=["danger"]]
 collision_layer = 2
 script = ExtResource("1_onmus")
 

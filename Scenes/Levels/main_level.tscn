@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://bl8y0umxbcqxu"]
+[gd_scene load_steps=19 format=3 uid="uid://bl8y0umxbcqxu"]
 
 [ext_resource type="PackedScene" uid="uid://34jgk8dd3mwt" path="res://Scenes/Player/player.tscn" id="1_7bw6a"]
 [ext_resource type="PackedScene" uid="uid://7a8rof62m2vb" path="res://Scenes/Detectable/crate.tscn" id="3_5or4k"]
@@ -11,6 +11,8 @@
 [ext_resource type="Texture2D" uid="uid://c6a0cp368pprm" path="res://Sprites/UI/HeartSpriteSheet.png" id="9_as14i"]
 [ext_resource type="PackedScene" uid="uid://4lpbeveg4kgy" path="res://Scripts/Danger/spikes.tscn" id="10_c0srq"]
 [ext_resource type="PackedScene" uid="uid://uhxu5svsk5cs" path="res://Scenes/Enemy/enemy_1.tscn" id="11_3nu2g"]
+[ext_resource type="PackedScene" uid="uid://bwpikkvpsr2g5" path="res://Scenes/Background/Houses/maison_1.tscn" id="12_r3uix"]
+[ext_resource type="PackedScene" uid="uid://cs5t6xclir31x" path="res://Scenes/Background/Houses/porte.tscn" id="13_fg48d"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_k3phj"]
 texture = ExtResource("4_2ecnh")
@@ -289,7 +291,7 @@ position = Vector2(77, 203)
 position = Vector2(300, 203)
 
 [node name="piece4" parent="." instance=ExtResource("5_7uprh")]
-position = Vector2(317, 80)
+position = Vector2(273, 24)
 
 [node name="GUI" type="CanvasLayer" parent="."]
 script = ExtResource("6_o6hru")
@@ -331,3 +333,9 @@ position = Vector2(247, 90)
 
 [node name="enemy1" parent="." instance=ExtResource("11_3nu2g")]
 position = Vector2(320, 128)
+
+[node name="maison1" parent="." instance=ExtResource("12_r3uix")]
+position = Vector2(404, 83)
+
+[node name="porte" parent="maison1" instance=ExtResource("13_fg48d")]
+position = Vector2(0, 24)

@@ -1,0 +1,16 @@
+[gd_scene load_steps=2 format=3 uid="uid://bwpikkvpsr2g5"]
+
+[ext_resource type="Texture2D" uid="uid://crmla74tk8vfh" path="res://Sprites/Background/house_spritesheet.png" id="1_pb3ng"]
+
+[node name="maison1" type="StaticBody2D"]
+scale = Vector2(2.5, 2.5)
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_pb3ng")
+region_enabled = true
+region_rect = Rect2(0, 0, 48, 64)
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+position = Vector2(24, -2.98023e-08)
+scale = Vector2(1.00781, 1.01067)
+polygon = PackedVector2Array(-47.6279, -8.90498, -47.6279, 2.94877e-08, -45.2465, 4.35354, -45.2465, 26.9128, -43.6589, 30.6727, -29.7674, 30.8706, -29.3705, 15.8311, -17.8605, 15.8311, -17.8605, 30.8706, -3.96899, 30.6727, -1.9845, 26.7149, -1.9845, 4.35354, 0, 2.94877e-08, 0, -8.90498)

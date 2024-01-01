@@ -66,4 +66,6 @@ func on_states_reset(): # pour changer le state sword en state move aprés la fi
 
 
 func _on_hitbox_area_entered(area):
-	flash()
+	if area.is_in_group("danger"): # quand on rentre en contact avec des arrières qui sont dans ce groupe danger le shader (flash) va fonctionner
+		player_data.health -= 1 # on perd une vie "un coeur" quand notre joeur entre en contact avec spikes "pointes".
+		flash()

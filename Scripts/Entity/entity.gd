@@ -1,5 +1,10 @@
 extends CharacterBody2D
 class_name entity_movement
+
+@onready var coin_loot = preload("res://Scenes/Detectable/piece.tscn")   # fonction permet d'accéder à des scènes qu'on a déjà créer
+# preload est une fonction qu'on utilise pour précharger une scène qui existe déja comme la pièce dans le doc Scenes 
+
+var health = 3  # nombre de vie de l'ennemi 
 var current_states
 enum enemy_states {MOVEUP, MOVEDOWN, MOVERIGHT, MOVELEFT, DEAD}
 
@@ -12,6 +17,9 @@ func _ready():
 
 
 func _physics_process(delta):
+
+	if health <= 0 :
+		current_states = enemy_states.DEAD
 	match current_states:
 		enemy_states.MOVEDOWN:
 			move_down(delta)
@@ -21,6 +29,8 @@ func _physics_process(delta):
 			move_left(delta)
 		enemy_states.MOVERIGHT:
 			move_right(delta)
+		enemy_states.DEAD:
+			dead()
 	
 	move_and_slide()
 	
@@ -67,4 +77,21 @@ func move_right(delta):
 	velocity.y = 0
 	$anim.play("move_right")
 
+func dead(): # fonction pour jouer mon animation anim
+	velocity.x = 0 # comme çà il ne bouge plus au moment oû il meurt 
+	velocity.y = 0
+	$anim.play("Dead")
+	await $anim.animation_finished
+	looting() # çà va instancier la pièce là oû se trouve mon ennemi
+	queue_free() # pour supprimer notre objet (ennemie) après l'attaque 
 
+
+func flash(): # fonction pour nous démontre que notre joeur est blessé(changement de coleur)
+	$Sprite2D.material.set_shader_parameter("flash_modifier", 1) # donne couleur blanc à mon joeur càd blessé
+	await get_tree().create_timer(0.3).timeout # temps écolué apendant la blesure avant qu'il revient à son état normal
+	$Sprite2D.material.set_shader_parameter("flash_modifier", 0) # couleur 0 càd la couleur normal de notre joeur après qu'il a revenu à son état normal
+
+func looting(): # permet d'accéder à différents éléments 
+	var piece = coin_loot.instantiate() # permet d'instancier donc charger notre piece quand notre ennemi va mourir
+	piece.global_position = global_position # permettre de pouvoir établir la position de notre pièce en fonction de la position de notre ennemi
+	get_tree().get_root().add_child(piece)
