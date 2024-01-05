@@ -1,12 +1,41 @@
-[gd_scene load_steps=9 format=3 uid="uid://cs5t6xclir31x"]
+[gd_scene load_steps=12 format=3 uid="uid://cs5t6xclir31x"]
 
 [ext_resource type="Texture2D" uid="uid://b08232b8vqrfh" path="res://Sprites/Background/house_door.png" id="1_px881"]
+[ext_resource type="Script" path="res://Scripts/Detectable/porte.gd" id="1_qdg2p"]
+[ext_resource type="Texture2D" uid="uid://c6xa3q225sq2u" path="res://Sprites/UI/B-button.png" id="3_4m1j2"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_8a6ql"]
 size = Vector2(16, 16)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ro4yv"]
 size = Vector2(8, 7)
+
+[sub_resource type="Animation" id="Animation_3mc81"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [1]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CollisionShape2D:disabled")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
 
 [sub_resource type="Animation" id="Animation_5cnpc"]
 resource_name = "closed"
@@ -33,34 +62,6 @@ tracks/1/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [false]
-}
-
-[sub_resource type="Animation" id="Animation_sfoiy"]
-resource_name = "opening"
-length = 0.4
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.2, 0.3),
-"transitions": PackedFloat32Array(1, 1, 1, 1),
-"update": 1,
-"values": [0, 1, 2, 3]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("CollisionShape2D:disabled")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.2, 0.3),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 1,
-"values": [false, true, true]
 }
 
 [sub_resource type="Animation" id="Animation_v6em6"]
@@ -91,8 +92,9 @@ tracks/1/keys = {
 "values": [true]
 }
 
-[sub_resource type="Animation" id="Animation_3mc81"]
-length = 0.001
+[sub_resource type="Animation" id="Animation_sfoiy"]
+resource_name = "opening"
+length = 0.4
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -100,10 +102,10 @@ tracks/0/path = NodePath("Sprite2D:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 1,
-"values": [1]
+"values": [0, 1, 2, 3]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -112,10 +114,10 @@ tracks/1/path = NodePath("CollisionShape2D:disabled")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
+"times": PackedFloat32Array(0, 0.2, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1),
 "update": 1,
-"values": [true]
+"values": [false, true, true]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_sujs1"]
@@ -126,7 +128,11 @@ _data = {
 "opening": SubResource("Animation_sfoiy")
 }
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_yn138"]
+radius = 7.0
+
 [node name="porte" type="StaticBody2D"]
+script = ExtResource("1_qdg2p")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("1_px881")
@@ -150,3 +156,17 @@ autoplay = "closed"
 libraries = {
 "": SubResource("AnimationLibrary_sujs1")
 }
+
+[node name="player_detecteur" type="Area2D" parent="."]
+position = Vector2(0, 15)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="player_detecteur"]
+shape = SubResource("CircleShape2D_yn138")
+
+[node name="b_button" type="Sprite2D" parent="."]
+position = Vector2(0, -14)
+texture = ExtResource("3_4m1j2")
+
+[connection signal="body_entered" from="detecteur" to="." method="_on_detecteur_body_entered"]
+[connection signal="body_entered" from="player_detecteur" to="." method="_on_player_detecteur_body_entered"]
+[connection signal="body_exited" from="player_detecteur" to="." method="_on_player_detecteur_body_exited"]

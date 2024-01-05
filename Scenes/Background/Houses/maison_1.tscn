@@ -3,6 +3,8 @@
 [ext_resource type="Texture2D" uid="uid://crmla74tk8vfh" path="res://Sprites/Background/house_spritesheet.png" id="1_pb3ng"]
 
 [node name="maison1" type="StaticBody2D"]
+z_index = 5
+y_sort_enabled = true
 scale = Vector2(2.5, 2.5)
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
