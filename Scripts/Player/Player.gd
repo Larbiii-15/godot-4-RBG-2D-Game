@@ -22,10 +22,18 @@ func _physics_process(delta):
 			sword()
 		player_states.DEAD:
 			dead() # on va le connecter à notre fobction dead
+		player_states.JUMP:
+			jump()
 
+func input_move(): # pour que notre player marche directement après qu'il saut
+	input_movement = Input.get_vector("ui_left","ui_right","ui_up","ui_down")
+	# c à d qu'on a appuyer sur un touche
+	if input_movement != Vector2.ZERO:
+		velocity = input_movement * vitesse
+	move_and_slide()
 
 func move():
-	
+	enable_collision()
 	input_movement = Input.get_vector("ui_left","ui_right","ui_up","ui_down")
 	# c à d qu'on a appuyer sur un touche
 	if input_movement != Vector2.ZERO:
@@ -45,11 +53,17 @@ func move():
 	if player_data.health <= 0 : # pour gérer l'"tat mort de joeur
 		current_states = player_states.DEAD # permettre de transitionner de l'étar dans lequel on se trouve à l'"tat de mort
 		
+	if Input.is_action_just_pressed("ui_jump"):
+		current_states = player_states.JUMP
 	move_and_slide()   # fct permet d'appliquer les mouvements
 	
 func sword():
 	anim_state.travel("Sword") # ici on va jouer notre animation
-	
+
+func jump():
+	input_move()
+	anim_state.travel("Jump") # state machine (Jump)
+
 func dead():
 	anim_state.travel("Dead") # je vais indiquer à Godot qu'il faut qu'il voyage jusqu'à mon Blade Space Dead pour pouvoir jouer l'animation
 	await get_tree().create_timer(1).timeout
@@ -69,3 +83,23 @@ func _on_hitbox_area_entered(area):
 	if area.is_in_group("danger"): # quand on rentre en contact avec des arrières qui sont dans ce groupe danger le shader (flash) va fonctionner
 		player_data.health -= 1 # on perd une vie "un coeur" quand notre joeur entre en contact avec spikes "pointes".
 		flash()
+
+func disable_collision(): # fonction permettre notre player de sauter en dessus des objets 
+	$CollisionShape2D.disabled = true
+
+func enable_collision():
+	$CollisionShape2D.disabled = false 
+
+func to_dictionary (): # qui va créer une liste a sauvegardé (la dernière position de player, le nombre de vie resté, nombre de pièce collecté)
+	return {
+		"position"	: [position.x , position.y],
+		"health"	: player_data.health,
+		"coin"		: player_data.coin,
+	}
+
+func from_dictionary(data):
+	position = Vector2 (data.position[0], data.position[1])
+	player_data.health = data.health
+	player_data.coin = data.coin
+	
+
