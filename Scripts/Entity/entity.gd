@@ -3,7 +3,7 @@ class_name entity_movement
 
 @onready var coin_loot = preload("res://Scenes/Detectable/piece.tscn")   # fonction permet d'accéder à des scènes qu'on a déjà créer
 # preload est une fonction qu'on utilise pour précharger une scène qui existe déja comme la pièce dans le doc Scenes 
-
+@onready var dead_fx = preload("res://Scenes/Dead_fx/dead_fx.tscn")
 var health = 3  # nombre de vie de l'ennemi 
 var current_states
 enum enemy_states {MOVEUP, MOVEDOWN, MOVERIGHT, MOVELEFT, DEAD}
@@ -51,12 +51,14 @@ func random_mouvement():
 			current_states = enemy_states.MOVEDOWN
 
 func move_down(delta):
+	@warning_ignore("standalone_expression", "standalone_expression", "standalone_expression", "standalone_expression")
 	Vector2.DOWN # pour que notre ennemie bouge sans le contrôler
 	velocity.y += speed * delta  # bouge sur l'axe vertical Y et multipler par delta pour contrôler la vitesse de notre ennemie
 	velocity.y = clamp(-speed, 15 , speed)  # pour mettre une limite à la vitesse pour qu'il ne dépasse pas 
 	velocity.x = 0 # sinon l'ennemi reste se déplace d'une sorte diagonale bizarre.
 	$anim.play("move_down")
 func move_up(delta):
+	@warning_ignore("standalone_expression")
 	Vector2.UP 
 	velocity.y -= speed * delta  
 	velocity.y = clamp(speed, 15 , -25)  
@@ -64,6 +66,7 @@ func move_up(delta):
 	$anim.play("move_up")
 
 func move_left(delta):
+	@warning_ignore("standalone_expression")
 	Vector2.LEFT 
 	velocity.x -= speed * delta  
 	velocity.x = clamp(speed, 15 , -25)  
@@ -71,6 +74,7 @@ func move_left(delta):
 	$anim.play("move_left")
 
 func move_right(delta):
+	@warning_ignore("standalone_expression", "standalone_expression", "standalone_expression", "standalone_expression", "standalone_expression", "standalone_expression")
 	Vector2.RIGHT 
 	velocity.x += speed * delta 
 	velocity.x = clamp(-speed, 15 , speed)  
@@ -78,6 +82,7 @@ func move_right(delta):
 	$anim.play("move_right")
 
 func dead(): # fonction pour jouer mon animation anim
+	dead_animation()
 	velocity.x = 0 # comme çà il ne bouge plus au moment oû il meurt 
 	velocity.y = 0
 	$anim.play("Dead")
@@ -95,3 +100,8 @@ func looting(): # permet d'accéder à différents éléments
 	var piece = coin_loot.instantiate() # permet d'instancier donc charger notre piece quand notre ennemi va mourir
 	piece.global_position = global_position # permettre de pouvoir établir la position de notre pièce en fonction de la position de notre ennemi
 	get_tree().get_root().add_child(piece)
+	
+func dead_animation():
+	var dead = dead_fx.instantiate()
+	dead.global_position = global_position
+	get_tree().get_root().add_child(dead)

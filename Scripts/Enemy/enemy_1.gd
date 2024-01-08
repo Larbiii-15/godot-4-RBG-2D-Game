@@ -11,7 +11,7 @@ func _on_timer_timeout():
 
 
 func _on_hitbox_area_entered(area):
-	if area.name == "Sword":  # Enlever de la vie de notre ennemi après un attaque
+	if area.is_in_group("sword"):  # Enlever de la vie de notre ennemi après un attaque
 		flash() # la fonction qui appelle l'effet shader créer au début à notre player
 		health -= 1
 		print(health)

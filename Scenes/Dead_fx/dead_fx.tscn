@@ -1,0 +1,70 @@
+[gd_scene load_steps=6 format=3 uid="uid://hr1wgc2ywrlo"]
+
+[ext_resource type="Texture2D" uid="uid://c0y46w65kuy3v" path="res://Sprites/Effect/enemy_afterdead_explosion_anim_spritesheet.png" id="1_6hkw6"]
+[ext_resource type="AudioStream" uid="uid://bboaaam647wlw" path="res://Sprites/Effect/enemies_hit.wav" id="2_yw26v"]
+
+[sub_resource type="Animation" id="Animation_mv611"]
+resource_name = "Active"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4]
+}
+tracks/1/type = "audio"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AudioStreamPlayer")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"clips": [{
+"end_offset": 0.176635,
+"start_offset": 0.0,
+"stream": ExtResource("2_yw26v")
+}],
+"times": PackedFloat32Array(0.1)
+}
+tracks/1/use_blend = true
+
+[sub_resource type="Animation" id="Animation_56swl"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [1]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_36hha"]
+_data = {
+"Active": SubResource("Animation_mv611"),
+"RESET": SubResource("Animation_56swl")
+}
+
+[node name="dead_fx" type="Node2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_6hkw6")
+hframes = 5
+frame = 1
+
+[node name="anim" type="AnimationPlayer" parent="."]
+autoplay = "Active"
+libraries = {
+"": SubResource("AnimationLibrary_36hha")
+}
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
