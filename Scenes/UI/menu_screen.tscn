@@ -1,0 +1,149 @@
+[gd_scene load_steps=6 format=3 uid="uid://cgjlhxxirkyel"]
+
+[ext_resource type="Script" path="res://Scripts/GUI/menu_screen.gd" id="1_682ku"]
+
+[sub_resource type="Animation" id="Animation_vsenu"]
+resource_name = "Active"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("titre_jeu:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(-264, -384), Vector2(-256, -160)]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(2),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"anim_bouncing"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_h1280"]
+resource_name = "bouncing"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("titre_jeu:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1, 2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(-256, -160), Vector2(-256, -192), Vector2(-256, -168)]
+}
+
+[sub_resource type="Animation" id="Animation_v57f5"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("titre_jeu:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-256, -160)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_s7yo4"]
+_data = {
+"Active": SubResource("Animation_vsenu"),
+"RESET": SubResource("Animation_v57f5"),
+"bouncing": SubResource("Animation_h1280")
+}
+
+[node name="menu_screen" type="Node2D"]
+script = ExtResource("1_682ku")
+
+[node name="titre_jeu" type="Label" parent="."]
+z_index = 5
+offset_left = -256.0
+offset_top = -160.0
+offset_right = 277.0
+offset_bottom = -54.0
+theme_override_colors/font_color = Color(0.00784314, 0.0196078, 0.00784314, 1)
+theme_override_font_sizes/font_size = 75
+text = "Game RBG 2D
+"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="background" type="ColorRect" parent="."]
+offset_left = -384.0
+offset_top = -192.0
+offset_right = 384.0
+offset_bottom = 256.0
+color = Color(0.992157, 0.929412, 0.0705882, 0.686275)
+
+[node name="Play" type="TextureButton" parent="."]
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="ColorRect" type="ColorRect" parent="Play"]
+layout_mode = 0
+offset_left = -128.0
+offset_right = 128.0
+offset_bottom = 72.0
+
+[node name="play_label" type="Label" parent="Play/ColorRect"]
+layout_mode = 0
+offset_top = 16.0
+offset_right = 256.0
+offset_bottom = 42.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 25
+text = "Jouer"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="quit" type="TextureButton" parent="."]
+offset_left = -16.0
+offset_top = 40.0
+offset_right = 24.0
+offset_bottom = 80.0
+
+[node name="ColorRect" type="ColorRect" parent="quit"]
+layout_mode = 0
+offset_left = -112.0
+offset_top = 88.0
+offset_right = 144.0
+offset_bottom = 160.0
+
+[node name="quit_label" type="Label" parent="quit/ColorRect"]
+layout_mode = 0
+offset_top = 24.0
+offset_right = 256.0
+offset_bottom = 50.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 25
+text = "Quitter"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Camera2D" type="Camera2D" parent="."]
+
+[node name="anim" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_s7yo4")
+}
+
+[connection signal="pressed" from="Play" to="." method="_on_play_pressed"]
+[connection signal="pressed" from="quit" to="." method="_on_quit_pressed"]
