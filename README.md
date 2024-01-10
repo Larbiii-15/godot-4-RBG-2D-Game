@@ -26,35 +26,10 @@ Assurez-vous d'avoir installé [Godot Engine](https://godotengine.org/) sur votr
 
 ## Configuration
 
-<img src="config_button.png" width="700" height="400">
+<img src="config_button.png" width="20" height="20">
 
 ## Exécution
 
 1. Dans Godot, assurez-vous d'avoir sélectionné la scène principale du jeu.
 
 2. Appuyez sur le bouton "Play" (jouer) dans l'interface Godot.
-
-## Touche á utiliser pour jeu au jeu
-
-Lorsque vous êtes prêt à plonger dans l'univers captivant de notre jeu, assurez-vous de maîtriser ces touches pour une expérience de jeu optimale :
-
-# Touches à Utiliser pour Jouer au Jeu
-
-Lorsque vous êtes prêt à plonger dans l'univers captivant de notre jeu, assurez-vous de maîtriser ces touches pour une expérience de jeu optimale :
-
-## Touches de Déplacement :
-
-Utilisez les touches de direction (haut, bas, gauche, droite) pour déplacer votre personnage à travers le monde du jeu.
-
-## Sauter :
-
-Appuyez sur la touche **C** pour permettre à votre personnage de sauter par-dessus les obstacles et atteindre des endroits élevés.
-
-## Attaque avec l'Épée :
-
-Défendez-vous en appuyant sur la touche **X** pour déclencher une attaque fulgurante avec votre épée.
-
-## Ouvrir la Porte :
-
-Lorsque vous êtes devant la maison, appuyez sur la touche **B** pour ouvrir la porte et explorer l'intérieur.
-
