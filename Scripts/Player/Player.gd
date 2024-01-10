@@ -65,6 +65,8 @@ func jump():
 	anim_state.travel("Jump") # state machine (Jump)
 
 func dead():
+	$Music.stop()
+	$GameOverSound.play()
 	anim_state.travel("Dead") # je vais indiquer à Godot qu'il faut qu'il voyage jusqu'à mon Blade Space Dead pour pouvoir jouer l'animation
 	await get_tree().create_timer(1).timeout
 	player_data.health = 4 

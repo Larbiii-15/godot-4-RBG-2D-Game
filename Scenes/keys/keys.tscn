@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://hr2oo3evufm7" path="res://Sprites/Interactables/Key_animated.png" id="2_rju3b"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_0valb"]
-radius = 9.0
+radius = 6.60303
 
 [sub_resource type="Animation" id="Animation_hdw0f"]
 resource_name = "Active"
@@ -43,15 +43,16 @@ _data = {
 }
 
 [node name="keys" type="Area2D"]
-scale = Vector2(0.5, 0.5)
+scale = Vector2(2, 2)
 script = ExtResource("1_q0l2j")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+texture_filter = 1
 texture = ExtResource("2_rju3b")
 hframes = 6
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(-4, 1)
+position = Vector2(-5, 0.2)
 shape = SubResource("CircleShape2D_0valb")
 
 [node name="anim" type="AnimationPlayer" parent="."]
