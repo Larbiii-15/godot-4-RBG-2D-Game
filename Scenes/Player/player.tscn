@@ -920,4 +920,10 @@ debug_color = Color(0.94902, 0.211765, 0, 0.419608)
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 
+[node name="GameOverMessage" type="Label" parent="."]
+offset_left = -29.0
+offset_top = -14.0
+offset_right = 63.0
+offset_bottom = 12.0
+
 [connection signal="area_entered" from="hitbox" to="." method="_on_hitbox_area_entered"]

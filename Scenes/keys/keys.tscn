@@ -43,7 +43,7 @@ _data = {
 }
 
 [node name="keys" type="Area2D"]
-scale = Vector2(2, 2)
+scale = Vector2(1.5, 1.5)
 script = ExtResource("1_q0l2j")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
