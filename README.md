@@ -14,9 +14,9 @@ Assurez-vous d'avoir installé [Godot Engine](https://godotengine.org/) sur votr
 
 1. Clonez le dépôt du jeu sur votre machine.
 
-    ```bash
-       git clone https://github.com/Larbiii-15/godot-4-RBG-2D-Game.git
-    ```
+	```bash
+	   git clone https://github.com/Larbiii-15/godot-4-RBG-2D-Game.git
+	```
 
 2. Ouvrez Godot Engine.
 
@@ -26,7 +26,7 @@ Assurez-vous d'avoir installé [Godot Engine](https://godotengine.org/) sur votr
 
 ## Configuration
 
-// Explication ici de toute configuration supplémentaire nécessaire pour faire fonctionner le jeu correctement.
+<img src="config_button.png" width="20" height="20">
 
 ## Exécution
 
