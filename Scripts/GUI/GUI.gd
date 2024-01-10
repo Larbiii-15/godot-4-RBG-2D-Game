@@ -15,7 +15,7 @@ func _ready():
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	$nombre_piece.text = var_to_str(player_data.coin) 
-
+	$Label.text = var_to_str(player_data.key) # pour afficher le score de clés collectés sur l'interface de jeu
 	for heart in $player_heart.get_children():
 		var index = heart.get_index()
 		var x = (index % HEART_ROW_SIZE) * HEART_OFFSET

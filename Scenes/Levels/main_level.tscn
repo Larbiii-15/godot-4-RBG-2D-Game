@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=3 uid="uid://bl8y0umxbcqxu"]
+[gd_scene load_steps=30 format=3 uid="uid://bl8y0umxbcqxu"]
 
 [ext_resource type="Script" path="res://Scripts/Data/main.gd" id="1_1it3s"]
 [ext_resource type="PackedScene" uid="uid://34jgk8dd3mwt" path="res://Scenes/Player/player.tscn" id="1_7bw6a"]
@@ -18,6 +18,8 @@
 [ext_resource type="PackedScene" uid="uid://uhxu5svsk5cs" path="res://Scenes/Enemy/enemy_1.tscn" id="11_3nu2g"]
 [ext_resource type="PackedScene" uid="uid://bwpikkvpsr2g5" path="res://Scenes/Background/Houses/maison_1.tscn" id="12_r3uix"]
 [ext_resource type="PackedScene" uid="uid://cs5t6xclir31x" path="res://Scenes/Background/Houses/porte.tscn" id="13_fg48d"]
+[ext_resource type="Texture2D" uid="uid://hr2oo3evufm7" path="res://Sprites/Interactables/Key_animated.png" id="15_ac4lh"]
+[ext_resource type="PackedScene" uid="uid://cdfpciniqnqki" path="res://Scenes/Detectable/key.tscn" id="20_2807u"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_k3phj"]
 texture = ExtResource("4_2ecnh")
@@ -901,6 +903,19 @@ scale = Vector2(2, 2)
 texture = ExtResource("9_as14i")
 hframes = 5
 
+[node name="Label" type="Label" parent="GUI"]
+offset_left = 112.0
+offset_top = 168.0
+offset_right = 152.0
+offset_bottom = 213.0
+theme_override_font_sizes/font_size = 32
+
+[node name="keys" type="Sprite2D" parent="GUI"]
+position = Vector2(45, 189)
+scale = Vector2(4, 4)
+texture = ExtResource("15_ac4lh")
+hframes = 8
+
 [node name="spikes" parent="." instance=ExtResource("10_c0srq")]
 position = Vector2(247, 90)
 
@@ -912,3 +927,7 @@ position = Vector2(404, 83)
 
 [node name="porte" parent="maison1" instance=ExtResource("13_fg48d")]
 position = Vector2(0, 24)
+
+[node name="Key" parent="." instance=ExtResource("20_2807u")]
+position = Vector2(192, 232)
+scale = Vector2(2, 2)
