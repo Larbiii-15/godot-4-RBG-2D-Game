@@ -1,0 +1,64 @@
+[gd_scene load_steps=7 format=3 uid="uid://buf366diauoys"]
+
+[ext_resource type="Script" path="res://Scripts/Keys/keys.gd" id="1_q0l2j"]
+[ext_resource type="Texture2D" uid="uid://hr2oo3evufm7" path="res://Sprites/Interactables/Key_animated.png" id="2_rju3b"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_0valb"]
+radius = 6.60303
+
+[sub_resource type="Animation" id="Animation_hdw0f"]
+resource_name = "Active"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [0, 2, 3]
+}
+
+[sub_resource type="Animation" id="Animation_ly1bv"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_cou8l"]
+_data = {
+"Active": SubResource("Animation_hdw0f"),
+"RESET": SubResource("Animation_ly1bv")
+}
+
+[node name="keys" type="Area2D"]
+scale = Vector2(1.5, 1.5)
+script = ExtResource("1_q0l2j")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture_filter = 1
+texture = ExtResource("2_rju3b")
+hframes = 6
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-5, 0.2)
+shape = SubResource("CircleShape2D_0valb")
+
+[node name="anim" type="AnimationPlayer" parent="."]
+autoplay = "Active"
+libraries = {
+"": SubResource("AnimationLibrary_cou8l")
+}
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

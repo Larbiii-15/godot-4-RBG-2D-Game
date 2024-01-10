@@ -63,10 +63,23 @@ func sword():
 func jump():
 	input_move()
 	anim_state.travel("Jump") # state machine (Jump)
+	
+func show_message(text):
+	$GameOverMessage.text = text
+	$GameOverMessage.show()
+
+	
+func show_game_over():
+	show_message("GAME OVER")
+
+	
 
 func dead():
+	$Music.stop()
+	show_game_over()
+	$GameOverSound.play()
 	anim_state.travel("Dead") # je vais indiquer à Godot qu'il faut qu'il voyage jusqu'à mon Blade Space Dead pour pouvoir jouer l'animation
-	await get_tree().create_timer(1).timeout
+	await get_tree().create_timer(2).timeout
 	player_data.health = 4 
 	current_states = player_states.MOVE
 	get_tree().reload_current_scene() # va redémarer la scène dans laquelle on se trouve aprés la mort
