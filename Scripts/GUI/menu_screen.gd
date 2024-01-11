@@ -6,8 +6,6 @@ var selection_menu = 0
 func _ready():
 	changer_menu()
 	$anim.play("Active")
-	
-
 
 func changer_menu():
 	$Play/ColorRect.color = Color.GRAY

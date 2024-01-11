@@ -1,17 +1,8 @@
-<<<<<<< HEAD
 [gd_scene load_steps=64 format=3 uid="uid://34jgk8dd3mwt"]
-=======
-[gd_scene load_steps=66 format=3 uid="uid://34jgk8dd3mwt"]
->>>>>>> refs/remotes/origin/main
 
 [ext_resource type="Script" path="res://Scripts/Player/Player.gd" id="1_boqhh"]
 [ext_resource type="Texture2D" uid="uid://bwniqnmsn02ca" path="res://Sprites/Player/Player-rpg.png" id="2_q3tvb"]
 [ext_resource type="Shader" path="res://Scenes/Shaders/hurt.gdshader" id="2_uu4i2"]
-<<<<<<< HEAD
-=======
-[ext_resource type="AudioStream" uid="uid://wdvim5e0d6sv" path="res://Sprites/Effect/swipes.wav" id="4_7sen5"]
-[ext_resource type="AudioStream" uid="uid://bqwg5htl5lso0" path="res://Sprites/Effect/enemies_dead_hit.wav" id="4_krfip"]
->>>>>>> refs/remotes/origin/main
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_12rxg"]
 shader = ExtResource("2_uu4i2")
@@ -23,6 +14,7 @@ size = Vector2(12, 9)
 
 [sub_resource type="Animation" id="Animation_mf1ya"]
 resource_name = "Dead"
+loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -35,21 +27,6 @@ tracks/0/keys = {
 "update": 1,
 "values": [100, 101, 102, 103, 104]
 }
-tracks/1/type = "audio"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("AudioStreamPlayer")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"clips": [{
-"end_offset": 0.0,
-"start_offset": 0.0,
-"stream": ExtResource("4_krfip")
-}],
-"times": PackedFloat32Array(0)
-}
-tracks/1/use_blend = true
 
 [sub_resource type="Animation" id="Animation_1cd1g"]
 resource_name = "IdleDown"
@@ -865,15 +842,4 @@ collision_mask = 2
 shape = SubResource("CircleShape2D_3aj3j")
 debug_color = Color(0.94902, 0.211765, 0, 0.419608)
 
-<<<<<<< HEAD
-=======
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
-
-[node name="GameOverMessage" type="Label" parent="."]
-offset_left = -29.0
-offset_top = -14.0
-offset_right = 63.0
-offset_bottom = 12.0
-
->>>>>>> refs/remotes/origin/main
 [connection signal="area_entered" from="hitbox" to="." method="_on_hitbox_area_entered"]
