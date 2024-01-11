@@ -26,6 +26,6 @@ func loot_coin():
 	get_tree().get_root().add_child(coin)
 	
 func looting(): # permet d'accéder à différents éléments 
-	var cle = key_loot.instantiate() # permet d'instancier donc charger notre piece quand notre ennemi va mourir
+	var cle = key_loot.instantiate() # permet d'instancier donc charger notre clé quand notre ennemi va mourir
 	cle.global_position = global_position # permettre de pouvoir établir la position de notre pièce en fonction de la position de notre ennemi
 	get_tree().get_root().add_child(cle)
