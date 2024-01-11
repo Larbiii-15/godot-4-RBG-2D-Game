@@ -922,18 +922,6 @@ position = Vector2(247, 90)
 [node name="enemy1" parent="." instance=ExtResource("11_3nu2g")]
 position = Vector2(320, 128)
 
-[node name="enemy5" parent="." instance=ExtResource("11_3nu2g")]
-position = Vector2(1056, 312)
-
-[node name="enemy3" parent="." instance=ExtResource("11_3nu2g")]
-position = Vector2(912, 312)
-
-[node name="enemy4" parent="." instance=ExtResource("11_3nu2g")]
-position = Vector2(712, 376)
-
-[node name="enemy2" parent="." instance=ExtResource("11_3nu2g")]
-position = Vector2(576, 128)
-
 [node name="maison1" parent="." instance=ExtResource("12_r3uix")]
 position = Vector2(404, 83)
 
@@ -942,8 +930,4 @@ position = Vector2(0, 24)
 
 [node name="Key" parent="." instance=ExtResource("20_2807u")]
 position = Vector2(192, 232)
-scale = Vector2(2, 2)
-
-[node name="Key2" parent="." instance=ExtResource("20_2807u")]
-position = Vector2(1056, 392)
 scale = Vector2(2, 2)
