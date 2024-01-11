@@ -13,7 +13,7 @@ func _process(delta):
 
 
 func _input(event): # fonction qui permettre de presser la button et ouvrir la porte
-	if Input.is_action_just_pressed ("ui_dialog") && active : # j'ai configuré le Button B de mon clavier pour appuyer si nécessaire d'ouvrir la porte
+	if Input.is_action_just_pressed ("ui_dialog") && active && player_data.key >= 1 : # j'ai configuré le Button B de mon clavier pour appuyer si nécessaire d'ouvrir la porte et même si j'ai un clé collecté
 		$anim.play("opening")
 		await $anim.animation_finished # je lui dit d'attendre que l'annimation que j'ai créer pour démontrer l'ouverture de la porte qu'i finit avant d'appliquer ensuite "opened"
 		$anim.play("opened")

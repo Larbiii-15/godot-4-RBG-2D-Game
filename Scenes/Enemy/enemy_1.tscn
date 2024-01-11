@@ -286,8 +286,8 @@ libraries = {
 }
 
 [node name="hitbox" type="Area2D" parent="." groups=["danger"]]
-collision_layer = 4
-collision_mask = 2
+collision_layer = 2
+collision_mask = 3
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="hitbox"]
 shape = SubResource("CircleShape2D_t1fkw")
