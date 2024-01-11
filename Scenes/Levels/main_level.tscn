@@ -19,7 +19,7 @@
 [ext_resource type="PackedScene" uid="uid://bwpikkvpsr2g5" path="res://Scenes/Background/Houses/maison_1.tscn" id="12_r3uix"]
 [ext_resource type="PackedScene" uid="uid://cs5t6xclir31x" path="res://Scenes/Background/Houses/porte.tscn" id="13_fg48d"]
 [ext_resource type="Texture2D" uid="uid://hr2oo3evufm7" path="res://Sprites/Interactables/Key_animated.png" id="15_ac4lh"]
-[ext_resource type="PackedScene" uid="uid://cdfpciniqnqki" path="res://Scenes/Detectable/key.tscn" id="20_2807u"]
+[ext_resource type="PackedScene" path="res://Scenes/Detectable/key.tscn" id="20_2807u"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_k3phj"]
 texture = ExtResource("4_2ecnh")

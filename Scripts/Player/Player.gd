@@ -9,6 +9,13 @@ var current_states = player_states.MOVE
 @export var vitesse = 50                  # créer un variable vitesse qui avance avec 50 pixels a chaque fois
 var input_movement = Vector2()    # créer un variable pour les mvts sur les axes X et Y
 
+func show_game_over():
+	show_message("GAME OVER")
+	
+func show_message(text):
+	$GameOverMessage.text = text
+	$GameOverMessage.show()
+
 func _ready():
 	$sword/CollisionShape2D.disabled = true # Dés le départ de jeu ma collision shape relative à l'animation de sword va être désactivé
 # fct Pour surveiller les inputs par click sur le clavier par joeur
@@ -65,11 +72,14 @@ func jump():
 	anim_state.travel("Jump") # state machine (Jump)
 
 func dead():
+	$Music.stop()
+	show_game_over()
+	$GameOverSound.play()
 	anim_state.travel("Dead") # je vais indiquer à Godot qu'il faut qu'il voyage jusqu'à mon Blade Space Dead pour pouvoir jouer l'animation
-	await get_tree().create_timer(1).timeout
+	await get_tree().create_timer(2).timeout
 	player_data.health = 4 
 	current_states = player_states.MOVE
-	get_tree().reload_current_scene() # va redémarer la scène dans laquelle on se trouve aprés la mort
+	get_tree().change_scene_to_file("res://Scenes/UI/menu_screen.tscn") # va redémarer la scène dans laquelle on se trouve aprés la mort
 
 func flash(): # fonction pour nous démontre que notre joeur est blessé(changement de coleur)
 	$Sprite2D.material.set_shader_parameter("flash_modifier", 1) # donne couleur blanc à mon joeur càd blessé
