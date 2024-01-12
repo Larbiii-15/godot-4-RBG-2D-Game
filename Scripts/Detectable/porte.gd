@@ -36,3 +36,12 @@ func _on_player_detecteur_body_exited(body): # pour le cas contraire quand le pl
 func _on_detecteur_body_entered(body): # fonction qui nous permettre d'entrer à l'intérieur de la maison
 	if body.name == "Player" :
 		get_tree().change_scene_to_file("res://Scenes/Background/interieur/interieur_maison.tscn")
+		show_message("YOU WIN")
+		$WinTimer.timeout
+		get_tree().change_scene_to_file("res://Scenes/UI/menu_screen.tscn")
+		
+	
+	
+func show_message(text):
+	$WinMesaage.text = text
+	$WinMesaage.show()

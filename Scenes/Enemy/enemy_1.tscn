@@ -268,6 +268,7 @@ _data = {
 
 [node name="enemy1" type="CharacterBody2D"]
 script = ExtResource("1_sk2hh")
+speed = 100
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 material = SubResource("ShaderMaterial_vv8ng")
