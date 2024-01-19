@@ -26,7 +26,7 @@ Assurez-vous d'avoir installé [Godot Engine](https://godotengine.org/) sur votr
 
 ## Configuration
 
-<img src="config_button.png" width="20" height="20">
+<img src="config_button.png" width="200" height="200">
 
 ## Exécution
 
