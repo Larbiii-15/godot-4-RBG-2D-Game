@@ -1,11 +1,16 @@
-[gd_scene load_steps=2 format=3 uid="uid://bwpikkvpsr2g5"]
+[gd_scene load_steps=4 format=3 uid="uid://bwpikkvpsr2g5"]
 
+[ext_resource type="Script" path="res://Scripts/Detectable/maison_1.gd" id="1_lxq2i"]
 [ext_resource type="Texture2D" uid="uid://crmla74tk8vfh" path="res://Sprites/Background/house_spritesheet.png" id="1_pb3ng"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_dsn2n"]
+size = Vector2(41.6, 20)
 
 [node name="maison1" type="StaticBody2D"]
 z_index = 5
 y_sort_enabled = true
 scale = Vector2(2.5, 2.5)
+script = ExtResource("1_lxq2i")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("1_pb3ng")
@@ -16,3 +21,14 @@ region_rect = Rect2(0, 0, 48, 64)
 position = Vector2(24, -2.98023e-08)
 scale = Vector2(1.00781, 1.01067)
 polygon = PackedVector2Array(-47.6279, -8.90498, -47.6279, 2.94877e-08, -45.2465, 4.35354, -45.2465, 26.9128, -43.6589, 30.6727, -29.7674, 30.8706, -29.3705, 15.8311, -17.8605, 15.8311, -17.8605, 30.8706, -3.96899, 30.6727, -1.9845, 26.7149, -1.9845, 4.35354, 0, 2.94877e-08, 0, -8.90498)
+
+[node name="detecteur" type="Area2D" parent="."]
+position = Vector2(0, -20)
+scale = Vector2(1, 1)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="detecteur"]
+position = Vector2(0.4, 0)
+shape = SubResource("RectangleShape2D_dsn2n")
+
+[connection signal="body_entered" from="detecteur" to="." method="_on_detecteur_body_entered"]
+[connection signal="body_exited" from="detecteur" to="." method="_on_detecteur_body_exited"]

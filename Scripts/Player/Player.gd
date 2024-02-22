@@ -100,14 +100,16 @@ func disable_collision(): # fonction permettre notre player de sauter en dessus 
 func enable_collision():
 	$CollisionShape2D.disabled = false 
 
-func to_dictionary (): # qui va créer une liste a sauvegardé (la dernière position de player, le nombre de vie resté, nombre de pièce collecté)
+func to_dictionary (): # qui va créer une liste a sauvegardé (la dernière position de player, 
+#le nombre de vie resté, nombre de pièce collecté)
+# Donc ici on envoie nos données au futur dictionnaire que l'on va créer dans notre script "saving_manager"
 	return {
 		"position"	: [position.x , position.y],
 		"health"	: player_data.health,
 		"coin"		: player_data.coin,
 	}
 
-func from_dictionary(data):
+func from_dictionary(data): # futur système de sauvegarde, donc ici on va les recevoir
 	position = Vector2 (data.position[0], data.position[1])
 	player_data.health = data.health
 	player_data.coin = data.coin

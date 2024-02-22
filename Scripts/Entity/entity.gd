@@ -87,7 +87,7 @@ func dead(): # fonction pour jouer mon animation anim
 	velocity.y = 0
 	$anim.play("Dead")
 	await $anim.animation_finished
-	looting() # çà va instancier la pièce là oû se trouve mon ennemi
+#	looting() # çà va instancier la pièce là oû se trouve mon ennemi
 	queue_free() # pour supprimer notre objet (ennemie) après l'attaque 
 
 

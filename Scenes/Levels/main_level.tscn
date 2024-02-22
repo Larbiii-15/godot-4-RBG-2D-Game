@@ -1,4 +1,4 @@
-[gd_scene load_steps=30 format=3 uid="uid://bl8y0umxbcqxu"]
+[gd_scene load_steps=31 format=3 uid="uid://bl8y0umxbcqxu"]
 
 [ext_resource type="Script" path="res://Scripts/Data/main.gd" id="1_1it3s"]
 [ext_resource type="PackedScene" uid="uid://34jgk8dd3mwt" path="res://Scenes/Player/player.tscn" id="1_7bw6a"]
@@ -19,7 +19,8 @@
 [ext_resource type="PackedScene" uid="uid://bwpikkvpsr2g5" path="res://Scenes/Background/Houses/maison_1.tscn" id="12_r3uix"]
 [ext_resource type="PackedScene" uid="uid://cs5t6xclir31x" path="res://Scenes/Background/Houses/porte.tscn" id="13_fg48d"]
 [ext_resource type="Texture2D" uid="uid://hr2oo3evufm7" path="res://Sprites/Interactables/Key_animated.png" id="15_ac4lh"]
-[ext_resource type="PackedScene" uid="uid://1e8nooybbhnc" path="res://Scenes/marche/marche.tscn" id="20_brd1u"]
+[ext_resource type="PackedScene" uid="uid://cdfpciniqnqki" path="res://Scenes/Detectable/key.tscn" id="20_2807u"]
+[ext_resource type="PackedScene" uid="uid://ddak2ilvpp2mt" path="res://Scenes/Detectable/levier.tscn" id="21_b3xkq"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_k3phj"]
 texture = ExtResource("4_2ecnh")
@@ -820,11 +821,10 @@ position = Vector2(169, 87)
 collision_mask = 3
 
 [node name="crate" parent="." instance=ExtResource("3_5or4k")]
-position = Vector2(1060, 232)
+position = Vector2(249, 132)
 
 [node name="Ground" type="TileMap" parent="."]
 tile_set = SubResource("TileSet_ehqpq")
-cell_quadrant_size = 18
 format = 2
 layer_0/name = "ground"
 layer_0/y_sort_enabled = true
@@ -857,40 +857,18 @@ zoom = Vector2(3, 3)
 script = ExtResource("5_qrhiq")
 player = NodePath("../Player")
 
-[node name="pieces" type="Node" parent="."]
-
-[node name="piece1" parent="pieces" instance=ExtResource("5_7uprh")]
+[node name="piece" parent="." instance=ExtResource("5_7uprh")]
 position = Vector2(182, 163)
 
-[node name="piece2" parent="pieces" instance=ExtResource("5_7uprh")]
+[node name="piece2" parent="." instance=ExtResource("5_7uprh")]
 position = Vector2(77, 203)
 
-[node name="piece3" parent="pieces" instance=ExtResource("5_7uprh")]
-position = Vector2(306, 196)
+[node name="piece3" parent="." instance=ExtResource("5_7uprh")]
+position = Vector2(300, 203)
 
-[node name="piece5" parent="pieces" instance=ExtResource("5_7uprh")]
-position = Vector2(485, 38)
-
-[node name="piece7" parent="pieces" instance=ExtResource("5_7uprh")]
-position = Vector2(726, 59)
-
-[node name="piece8" parent="pieces" instance=ExtResource("5_7uprh")]
-position = Vector2(891, 164)
-
-[node name="piece9" parent="pieces" instance=ExtResource("5_7uprh")]
-position = Vector2(904, 410)
-
-[node name="piece10" parent="pieces" instance=ExtResource("5_7uprh")]
-position = Vector2(1050, 396)
-
-[node name="piece11" parent="pieces" instance=ExtResource("5_7uprh")]
-position = Vector2(1054, 63)
-
-[node name="piece4" parent="pieces" instance=ExtResource("5_7uprh")]
+[node name="piece4" parent="." instance=ExtResource("5_7uprh")]
+y_sort_enabled = true
 position = Vector2(273, 24)
-
-[node name="piece6" parent="pieces" instance=ExtResource("5_7uprh")]
-position = Vector2(163, 31)
 
 [node name="GUI" type="CanvasLayer" parent="."]
 script = ExtResource("6_o6hru")
@@ -943,37 +921,36 @@ hframes = 8
 [node name="spikes" parent="." instance=ExtResource("10_c0srq")]
 position = Vector2(247, 90)
 
-[node name="enemis" type="Node" parent="."]
+[node name="enemy1" parent="." instance=ExtResource("11_3nu2g")]
+position = Vector2(320, 128)
 
-[node name="enemy1" parent="enemis" instance=ExtResource("11_3nu2g")]
-position = Vector2(177, 231)
+[node name="enemy5" parent="." instance=ExtResource("11_3nu2g")]
+position = Vector2(1056, 312)
 
-[node name="enemy2" parent="enemis" instance=ExtResource("11_3nu2g")]
-position = Vector2(511, 103)
+[node name="enemy3" parent="." instance=ExtResource("11_3nu2g")]
+position = Vector2(912, 312)
 
-[node name="enemy3" parent="enemis" instance=ExtResource("11_3nu2g")]
-position = Vector2(1031, 165)
+[node name="enemy4" parent="." instance=ExtResource("11_3nu2g")]
+position = Vector2(712, 376)
 
-[node name="enemy4" parent="enemis" instance=ExtResource("11_3nu2g")]
-position = Vector2(758, 156)
+[node name="enemy2" parent="." instance=ExtResource("11_3nu2g")]
+position = Vector2(576, 128)
 
-[node name="enemy5" parent="enemis" instance=ExtResource("11_3nu2g")]
-position = Vector2(1069, 93)
-
-[node name="enemy6" parent="enemis" instance=ExtResource("11_3nu2g")]
-position = Vector2(621, 288)
-
-[node name="enemy7" parent="enemis" instance=ExtResource("11_3nu2g")]
-position = Vector2(521, 327)
-
-[node name="enemy8" parent="enemis" instance=ExtResource("11_3nu2g")]
-position = Vector2(445, 196)
-
-[node name="maison" parent="." instance=ExtResource("12_r3uix")]
+[node name="maison1" parent="." instance=ExtResource("12_r3uix")]
 position = Vector2(404, 83)
 
-[node name="porte" parent="maison" instance=ExtResource("13_fg48d")]
+[node name="porte" parent="maison1" instance=ExtResource("13_fg48d")]
 position = Vector2(0, 24)
 
-[node name="marche" parent="." instance=ExtResource("20_brd1u")]
-position = Vector2(578, 16)
+[node name="Key" parent="." instance=ExtResource("20_2807u")]
+position = Vector2(192, 232)
+scale = Vector2(2, 2)
+
+[node name="Key2" parent="." instance=ExtResource("20_2807u")]
+position = Vector2(1056, 392)
+scale = Vector2(2, 2)
+
+[node name="levier" parent="." instance=ExtResource("21_b3xkq")]
+z_index = 5
+y_sort_enabled = true
+position = Vector2(333, 243)

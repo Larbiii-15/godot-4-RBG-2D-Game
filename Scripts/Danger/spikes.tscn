@@ -125,6 +125,7 @@ _data = {
 size = Vector2(16, 16)
 
 [node name="spikes" type="Area2D" groups=["danger"]]
+y_sort_enabled = true
 collision_layer = 2
 script = ExtResource("1_onmus")
 
