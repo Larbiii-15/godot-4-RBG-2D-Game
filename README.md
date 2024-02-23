@@ -54,3 +54,7 @@ Défendez-vous en appuyant sur la touche **X** pour déclencher une attaque fulg
 
 Lorsque vous êtes devant la maison, appuyez sur la touche **B** pour ouvrir la porte et explorer l'intérieur.
 
+### Notre jeu
+
+Vous pouvez jouez á notre jeu en cliquant [ici]([https://godotengine.org/](https://sae-6-1-final.vercel.app)https://sae-6-1-final.vercel.app).
+
