@@ -85,6 +85,7 @@ animations = [{
 }]
 
 [node name="shopmenu" type="StaticBody2D"]
+visible = false
 position = Vector2(-2, -1)
 script = ExtResource("1_8e1yo")
 

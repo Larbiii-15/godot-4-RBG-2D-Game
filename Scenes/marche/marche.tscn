@@ -69,6 +69,7 @@ visible = false
 position = Vector2(40, -26)
 
 [node name="shopmenu" parent="." instance=ExtResource("4_cq7cs")]
+visible = false
 position = Vector2(-137, -28)
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

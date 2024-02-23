@@ -1,4 +1,4 @@
-[gd_scene load_steps=31 format=3 uid="uid://bl8y0umxbcqxu"]
+[gd_scene load_steps=32 format=3 uid="uid://bl8y0umxbcqxu"]
 
 [ext_resource type="Script" path="res://Scripts/Data/main.gd" id="1_1it3s"]
 [ext_resource type="PackedScene" uid="uid://34jgk8dd3mwt" path="res://Scenes/Player/player.tscn" id="1_7bw6a"]
@@ -21,6 +21,7 @@
 [ext_resource type="Texture2D" uid="uid://hr2oo3evufm7" path="res://Sprites/Interactables/Key_animated.png" id="15_ac4lh"]
 [ext_resource type="PackedScene" uid="uid://cdfpciniqnqki" path="res://Scenes/Detectable/key.tscn" id="20_2807u"]
 [ext_resource type="PackedScene" uid="uid://ddak2ilvpp2mt" path="res://Scenes/Detectable/levier.tscn" id="21_b3xkq"]
+[ext_resource type="PackedScene" uid="uid://1e8nooybbhnc" path="res://Scenes/marche/marche.tscn" id="22_iyab6"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_k3phj"]
 texture = ExtResource("4_2ecnh")
@@ -867,7 +868,6 @@ position = Vector2(77, 203)
 position = Vector2(300, 203)
 
 [node name="piece4" parent="." instance=ExtResource("5_7uprh")]
-y_sort_enabled = true
 position = Vector2(273, 24)
 
 [node name="GUI" type="CanvasLayer" parent="."]
@@ -954,3 +954,6 @@ scale = Vector2(2, 2)
 z_index = 5
 y_sort_enabled = true
 position = Vector2(333, 243)
+
+[node name="marche" parent="." instance=ExtResource("22_iyab6")]
+position = Vector2(570, 16)
