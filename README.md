@@ -54,3 +54,6 @@ Défendez-vous en appuyant sur la touche **X** pour déclencher une attaque fulg
 
 Lorsque vous êtes devant la maison, appuyez sur la touche **B** pour ouvrir la porte et explorer l'intérieur.
 
+### Notre jeu
+
+Vous pouvez jouer à notre jeu en cliquant [ici](https://zelda-final.vercel.app).
