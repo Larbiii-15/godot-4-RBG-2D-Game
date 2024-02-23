@@ -56,4 +56,4 @@ Lorsque vous êtes devant la maison, appuyez sur la touche **B** pour ouvrir la 
 
 ### Notre jeu
 
-Vous pouvez jouer à notre jeu en cliquant [ici](https://sae-6-1-final.vercel.app).
+Vous pouvez jouer à notre jeu en cliquant [ici](https://zelda-final.vercel.app).
