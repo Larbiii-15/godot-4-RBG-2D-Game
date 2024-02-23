@@ -1,7 +1,9 @@
 extends CharacterBody2D
 
+
 enum player_states {MOVE,JUMP,SWORD, DEAD} #state machine
 var current_states = player_states.MOVE
+
 
 @onready var anim_tree = $anim_tree  # pour accéder directement au contenu anim_tree
 @onready var anim_state = anim_tree.get("parameters/playback") # pour qu'il consulte nos paramètres créer dans anim (Jump, Move ...)

@@ -18,12 +18,12 @@ func _process(delta):
 		$anim.play("opened")
 		player_data.porte_ouverte == false
 		
-#func _input(event): # fonction qui permettre de presser la button et ouvrir la porte
-#	if Input.is_action_just_pressed ("ui_dialog") && active && player_data.key >= 1 : # j'ai configuré le Button B de mon clavier pour appuyer si nécessaire d'ouvrir la porte et même si j'ai un clé collecté
-#		$anim.play("opening")
-#		await $anim.animation_finished # je lui dit d'attendre que l'annimation que j'ai créer pour démontrer l'ouverture de la porte qu'i finit avant d'appliquer ensuite "opened"
-#		$anim.play("opened")
-#		active = false
+func _input(event): # fonction qui permettre de presser la button et ouvrir la porte
+	if Input.is_action_just_pressed ("ui_dialog") && active && player_data.key >= 1 : # j'ai configuré le Button B de mon clavier pour appuyer si nécessaire d'ouvrir la porte et même si j'ai un clé collecté
+		$anim.play("opening")
+		await $anim.animation_finished # je lui dit d'attendre que l'annimation que j'ai créer pour démontrer l'ouverture de la porte qu'i finit avant d'appliquer ensuite "opened"
+		$anim.play("opened")
+		active = false
 		
 
 func _on_player_detecteur_body_entered(body): # pour afficher le button B quand notre player arrive an face de la porte
@@ -44,8 +44,6 @@ func _on_detecteur_body_entered(body): # fonction qui nous permettre d'entrer à
 	if body.name == "Player" :
 		get_tree().change_scene_to_file("res://Scenes/Background/interieur/interieur_maison.tscn")
 		show_message("YOU WIN")
-		$WinTimer.timeout
-		get_tree().change_scene_to_file("res://Scenes/UI/menu_screen.tscn")
 		
 	
 	

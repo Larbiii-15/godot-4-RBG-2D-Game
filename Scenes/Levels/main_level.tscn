@@ -822,7 +822,7 @@ position = Vector2(169, 87)
 collision_mask = 3
 
 [node name="crate" parent="." instance=ExtResource("3_5or4k")]
-position = Vector2(249, 132)
+position = Vector2(245, 148)
 
 [node name="Ground" type="TileMap" parent="."]
 tile_set = SubResource("TileSet_ehqpq")
@@ -913,8 +913,8 @@ offset_bottom = 213.0
 theme_override_font_sizes/font_size = 32
 
 [node name="keys" type="Sprite2D" parent="GUI"]
-position = Vector2(45, 189)
-scale = Vector2(4, 4)
+position = Vector2(1068, 49.5)
+scale = Vector2(3.375, 3.03125)
 texture = ExtResource("15_ac4lh")
 hframes = 8
 
@@ -956,4 +956,4 @@ y_sort_enabled = true
 position = Vector2(333, 243)
 
 [node name="marche" parent="." instance=ExtResource("22_iyab6")]
-position = Vector2(570, 16)
+position = Vector2(592, 34)

@@ -24,11 +24,13 @@ polygon = PackedVector2Array(-47.6279, -8.90498, -47.6279, 2.94877e-08, -45.2465
 
 [node name="detecteur" type="Area2D" parent="."]
 position = Vector2(0, -20)
-scale = Vector2(1, 1)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="detecteur"]
 position = Vector2(0.4, 0)
 shape = SubResource("RectangleShape2D_dsn2n")
 
+[node name="WinTimer" type="Timer" parent="."]
+
 [connection signal="body_entered" from="detecteur" to="." method="_on_detecteur_body_entered"]
 [connection signal="body_exited" from="detecteur" to="." method="_on_detecteur_body_exited"]
+[connection signal="timeout" from="WinTimer" to="." method="_on_win_timer_timeout"]
