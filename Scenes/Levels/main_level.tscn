@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=3 uid="uid://bl8y0umxbcqxu"]
+[gd_scene load_steps=30 format=3 uid="uid://bl8y0umxbcqxu"]
 
 [ext_resource type="Script" path="res://Scripts/Data/main.gd" id="1_1it3s"]
 [ext_resource type="PackedScene" uid="uid://34jgk8dd3mwt" path="res://Scenes/Player/player.tscn" id="1_7bw6a"]
@@ -19,6 +19,7 @@
 [ext_resource type="PackedScene" uid="uid://bwpikkvpsr2g5" path="res://Scenes/Background/Houses/maison_1.tscn" id="12_r3uix"]
 [ext_resource type="PackedScene" uid="uid://cs5t6xclir31x" path="res://Scenes/Background/Houses/porte.tscn" id="13_fg48d"]
 [ext_resource type="Texture2D" uid="uid://hr2oo3evufm7" path="res://Sprites/Interactables/Key_animated.png" id="15_ac4lh"]
+[ext_resource type="PackedScene" uid="uid://1e8nooybbhnc" path="res://Scenes/marche/marche.tscn" id="20_brd1u"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_k3phj"]
 texture = ExtResource("4_2ecnh")
@@ -948,7 +949,7 @@ position = Vector2(247, 90)
 position = Vector2(177, 231)
 
 [node name="enemy2" parent="enemis" instance=ExtResource("11_3nu2g")]
-position = Vector2(576, 128)
+position = Vector2(511, 103)
 
 [node name="enemy3" parent="enemis" instance=ExtResource("11_3nu2g")]
 position = Vector2(1031, 165)
@@ -973,3 +974,6 @@ position = Vector2(404, 83)
 
 [node name="porte" parent="maison" instance=ExtResource("13_fg48d")]
 position = Vector2(0, 24)
+
+[node name="marche" parent="." instance=ExtResource("20_brd1u")]
+position = Vector2(578, 16)

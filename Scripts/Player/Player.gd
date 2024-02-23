@@ -112,4 +112,9 @@ func from_dictionary(data):
 	player_data.health = data.health
 	player_data.coin = data.coin
 	
+func player_sell_methode():
+	pass
+
+func shop_methode():
+	pass
 
