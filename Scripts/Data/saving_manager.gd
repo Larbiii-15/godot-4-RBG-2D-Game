@@ -38,9 +38,7 @@ func _input(event):
 	if event.is_action_pressed("ui_save"):
 		player_data.save_key += 1
 		save_data() # donc aprés qu'on a appuyer sur le button V il va appeler la fonction save_data() qui va sauvegarder notre jeu
-		print("Jeu Sauvegarder")
 # pour facilité le débogage du jeu 
 # maintenat la deuxième event pour la partie load on créant le button "N"
 	if event.is_action_pressed("ui_load"):
 		load_data()
-		print("Jeu Charger")

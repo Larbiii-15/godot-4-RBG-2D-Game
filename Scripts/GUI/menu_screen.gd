@@ -16,10 +16,6 @@ func changer_menu():
 		1:
 			$quit/ColorRect.color = Color.LIGHT_SALMON
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
-	pass
-
 func anim_bouncing():
 	$anim.play("bouncing")
 

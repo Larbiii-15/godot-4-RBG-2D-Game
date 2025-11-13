@@ -8,7 +8,7 @@ var current_states = player_states.MOVE
 @onready var anim_tree = $anim_tree  # pour accéder directement au contenu anim_tree
 @onready var anim_state = anim_tree.get("parameters/playback") # pour qu'il consulte nos paramètres créer dans anim (Jump, Move ...)
 
-@export var vitesse = 50                  # créer un variable vitesse qui avance avec 50 pixels a chaque fois
+@export var vitesse = 55  # Vitesse légèrement augmentée pour une meilleure jouabilité
 var input_movement = Vector2()    # créer un variable pour les mvts sur les axes X et Y
 
 func show_game_over():
@@ -78,14 +78,16 @@ func dead():
 	show_game_over()
 	$GameOverSound.play()
 	anim_state.travel("Dead") # je vais indiquer à Godot qu'il faut qu'il voyage jusqu'à mon Blade Space Dead pour pouvoir jouer l'animation
-	await get_tree().create_timer(2).timeout
-	player_data.health = 4 
+	await get_tree().create_timer(3).timeout  # Plus de temps pour voir le game over
+	player_data.health = 4
+	player_data.score = 0  # Réinitialiser le score après la mort
+	player_data.enemies_defeated = 0  # Réinitialiser le compteur d'ennemis
 	current_states = player_states.MOVE
 	get_tree().change_scene_to_file("res://Scenes/UI/menu_screen.tscn") # va redémarer la scène dans laquelle on se trouve aprés la mort
 
 func flash(): # fonction pour nous démontre que notre joeur est blessé(changement de coleur)
 	$Sprite2D.material.set_shader_parameter("flash_modifier", 1) # donne couleur blanc à mon joeur càd blessé
-	await get_tree().create_timer(0.3).timeout # temps écolué apendant la blesure avant qu'il revient à son état normal
+	await get_tree().create_timer(0.2).timeout # Effet flash plus rapide pour meilleure réactivité
 	$Sprite2D.material.set_shader_parameter("flash_modifier", 0) # couleur 0 càd la couleur normal de notre joeur après qu'il a revenu à son état normal
 func on_states_reset(): # pour changer le state sword en state move aprés la fin d'un cycle d'attaque (right,left,up,down)
 	current_states = player_states.MOVE
@@ -109,12 +111,19 @@ func to_dictionary (): # qui va créer une liste a sauvegardé (la dernière pos
 		"position"	: [position.x , position.y],
 		"health"	: player_data.health,
 		"coin"		: player_data.coin,
+		"score"		: player_data.score,
+		"enemies_defeated"	: player_data.enemies_defeated,
 	}
 
 func from_dictionary(data): # futur système de sauvegarde, donc ici on va les recevoir
 	position = Vector2 (data.position[0], data.position[1])
 	player_data.health = data.health
 	player_data.coin = data.coin
+	# Charger score et enemies_defeated si disponibles (compatibilité avec anciennes sauvegardes)
+	if data.has("score"):
+		player_data.score = data.score
+	if data.has("enemies_defeated"):
+		player_data.enemies_defeated = data.enemies_defeated
 	
 func player_sell_methode():
 	pass
