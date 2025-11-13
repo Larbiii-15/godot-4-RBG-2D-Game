@@ -3,12 +3,6 @@ extends StaticBody2D
 @export var id = int()
 var active = false
 
-# Called when the node enters the scene tree for the first time.
-func _ready():
-	pass # Replace with function body.
-
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	$b_button.visible = active 
 
@@ -29,7 +23,6 @@ func _input(event): # fonction qui permettre de presser la button et ouvrir la p
 func _on_player_detecteur_body_entered(body): # pour afficher le button B quand notre player arrive an face de la porte
 	if body.name == "Player":
 		player_data.last_position = body.position
-		print(player_data.last_position)
 		active = true 
 
 

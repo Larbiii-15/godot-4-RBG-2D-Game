@@ -92,9 +92,9 @@ func flash(): # fonction pour nous démontre que notre joeur est blessé(changem
 func looting(): # permet d'accéder à différents éléments 
 	var piece = coin_loot.instantiate() # permet d'instancier donc charger notre piece quand notre ennemi va mourir
 	piece.global_position = global_position # permettre de pouvoir établir la position de notre pièce en fonction de la position de notre ennemi
-	get_tree().get_root().add_child(piece)
+	get_parent().add_child(piece)  # Ajouter au parent direct plutôt qu'à la racine pour meilleure performance
 	
 func dead_animation():
 	var dead = dead_fx.instantiate()
 	dead.global_position = global_position
-	get_tree().get_root().add_child(dead)
+	get_parent().add_child(dead)  # Ajouter au parent direct plutôt qu'à la racine pour meilleure performance
