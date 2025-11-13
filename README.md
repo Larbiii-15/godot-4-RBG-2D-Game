@@ -54,6 +54,20 @@ Défendez-vous en appuyant sur la touche **X** pour déclencher une attaque fulg
 
 Lorsque vous êtes devant la maison, appuyez sur la touche **B** pour ouvrir la porte et explorer l'intérieur.
 
+## Sauvegarder / Charger :
+
+- Appuyez sur **V** pour sauvegarder votre progression
+- Appuyez sur **N** pour charger votre dernière sauvegarde
+
+## Système de Score
+
+Le jeu dispose d'un système de score complet :
+- **+10 points** pour chaque pièce collectée
+- **+50 points** pour chaque clé collectée
+- **+100 points** pour chaque ennemi vaincu
+
+Votre score et vos statistiques sont automatiquement sauvegardés !
+
 ### Notre jeu
 
 Vous pouvez jouer à notre jeu en cliquant [ici](https://zelda-final.vercel.app).
