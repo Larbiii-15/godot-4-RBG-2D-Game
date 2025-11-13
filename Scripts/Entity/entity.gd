@@ -74,6 +74,8 @@ func move_right(delta):
 
 func dead(): # fonction pour jouer mon animation anim
 	dead_animation()
+	player_data.enemies_defeated += 1  # Incrémenter le compteur d'ennemis vaincus
+	player_data.score += 100  # Ajouter 100 points par ennemi vaincu
 	velocity.x = 0 # comme çà il ne bouge plus au moment oû il meurt 
 	velocity.y = 0
 	$anim.play("Dead")

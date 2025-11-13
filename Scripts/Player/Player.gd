@@ -79,7 +79,9 @@ func dead():
 	$GameOverSound.play()
 	anim_state.travel("Dead") # je vais indiquer à Godot qu'il faut qu'il voyage jusqu'à mon Blade Space Dead pour pouvoir jouer l'animation
 	await get_tree().create_timer(3).timeout  # Plus de temps pour voir le game over
-	player_data.health = 4 
+	player_data.health = 4
+	player_data.score = 0  # Réinitialiser le score après la mort
+	player_data.enemies_defeated = 0  # Réinitialiser le compteur d'ennemis
 	current_states = player_states.MOVE
 	get_tree().change_scene_to_file("res://Scenes/UI/menu_screen.tscn") # va redémarer la scène dans laquelle on se trouve aprés la mort
 
@@ -109,12 +111,19 @@ func to_dictionary (): # qui va créer une liste a sauvegardé (la dernière pos
 		"position"	: [position.x , position.y],
 		"health"	: player_data.health,
 		"coin"		: player_data.coin,
+		"score"		: player_data.score,
+		"enemies_defeated"	: player_data.enemies_defeated,
 	}
 
 func from_dictionary(data): # futur système de sauvegarde, donc ici on va les recevoir
 	position = Vector2 (data.position[0], data.position[1])
 	player_data.health = data.health
 	player_data.coin = data.coin
+	# Charger score et enemies_defeated si disponibles (compatibilité avec anciennes sauvegardes)
+	if data.has("score"):
+		player_data.score = data.score
+	if data.has("enemies_defeated"):
+		player_data.enemies_defeated = data.enemies_defeated
 	
 func player_sell_methode():
 	pass
